@@ -22,6 +22,7 @@
             transition: opacity 0.5s ease-in-out; /* Ajuste la transition pour être plus fluide */
             background: #000; /* Fond noir */
             overflow: hidden;
+            position: relative;
         }
 
         #presentation-container img {
@@ -35,7 +36,7 @@
 
         #navigation-buttons {
             position: fixed;
-            top: 50%;
+            bottom: 20px; /* Place le conteneur de boutons en bas de la fenêtre */
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -45,8 +46,8 @@
         }
 
         #prev-button,
-        #next-button,
-        #x-button {
+        #x-button,
+        #next-button {
             background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
             border: none;
@@ -59,12 +60,12 @@
 </head>
 
 <body>
+    <div id="presentation-container"></div>
     <div id="navigation-buttons">
         <button id="prev-button" onclick="navigate(-1)">Previous</button>
-        <button id="next-button" onclick="navigate(1)">Next</button>
         <button id="x-button" onclick="openX()">X</button>
+        <button id="next-button" onclick="navigate(1)">Next</button>
     </div>
-    <div id="presentation-container"></div>
     <script>
         const presentationContainer = document.getElementById('presentation-container');
         const images = ['TEST_page-0001.jpg',
