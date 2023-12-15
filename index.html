@@ -46,8 +46,21 @@
         }
 
         #prev-button,
-        #x-button,
-        #next-button,
+        #next-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #volume-controls {
+            display: flex;
+            align-items: center;
+        }
+
         #volume-button,
         #mute-button {
             background-color: rgba(0, 0, 0, 0.5);
@@ -57,6 +70,7 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -70,10 +84,11 @@
     <div id="presentation-container"></div>
     <div id="navigation-buttons">
         <button id="prev-button" onclick="navigate(-1)">Previous</button>
-        <button id="x-button" onclick="openX()">X</button>
         <button id="next-button" onclick="navigate(1)">Next</button>
-        <button id="volume-button" onclick="toggleVolume()">Volume</button>
-        <button id="mute-button" onclick="toggleMute()">Mute</button>
+        <div id="volume-controls">
+            <button id="volume-button" onclick="toggleVolume()">Volume</button>
+            <button id="mute-button" onclick="toggleMute()">Mute</button>
+        </div>
     </div>
 
     <script>
@@ -104,10 +119,6 @@
                 currentPage = newIndex;
                 showPage(currentPage);
             }
-        }
-
-        function openX() {
-            window.open('https://twitter.com/Crash_113589311', '_blank');
         }
 
         function toggleVolume() {
