@@ -47,7 +47,9 @@
 
         #prev-button,
         #x-button,
-        #next-button {
+        #next-button,
+        #volume-button,
+        #mute-button {
             background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
             border: none;
@@ -60,8 +62,8 @@
 </head>
 
 <body>
-    <audio id="audio" preload="auto" volume="0.5">
-        <source src="Ake Project - Whiteblack - 03 Public Slavery (feat Mya Gogo, Rhyspectz D & Okilah Beatz).mp3" type="audio/mp3">
+    <audio id="audio" preload="auto" volume="0.5" autoplay>
+        <source src="your-audio-file.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
@@ -69,28 +71,23 @@
     <div id="navigation-buttons">
         <button id="prev-button" onclick="navigate(-1)">Previous</button>
         <button id="x-button" onclick="openX()">X</button>
-        <button id="next-button" onclick="playAudio(); navigate(1)">Next</button>
+        <button id="next-button" onclick="navigate(1)">Next</button>
+        <button id="volume-button" onclick="toggleVolume()">Volume</button>
+        <button id="mute-button" onclick="toggleMute()">Mute</button>
     </div>
 
     <script>
         const presentationContainer = document.getElementById('presentation-container');
+        const audio = document.getElementById('audio');
         const images = ['TEST_page-0001.jpg', 'TEST_page-0002.jpg', /* ... add other image URLs ... */ ];
         let currentPage = 0;
-        let audioPlayed = false;
+        let isMuted = false;
 
         function preloadImages() {
             images.forEach((image) => {
                 const img = new Image();
                 img.src = image;
             });
-        }
-
-        function playAudio() {
-            if (!audioPlayed) {
-                const audio = document.getElementById('audio');
-                audio.play();
-                audioPlayed = true;
-            }
         }
 
         function showPage(pageIndex) {
@@ -111,6 +108,16 @@
 
         function openX() {
             window.open('https://twitter.com/Crash_113589311', '_blank');
+        }
+
+        function toggleVolume() {
+            audio.volume = audio.volume === 0 ? 0.5 : 0; // Toggle between 50% volume and mute
+            isMuted = audio.volume === 0;
+        }
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            audio.volume = isMuted ? 0 : 0.5;
         }
 
         preloadImages();
