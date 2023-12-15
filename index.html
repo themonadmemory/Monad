@@ -10,16 +10,16 @@
             margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
-            background: #000; /* Ajout d'un fond noir */
+            background: #000; /* Fond noir */
         }
 
         #presentation-container {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover; /* Ajuste la taille de l'image pour couvrir complètement le conteneur */
             cursor: pointer;
             transition: opacity 1s ease-in-out;
-            background: #000; /* Ajout d'un fond noir */
+            background: #000; /* Fond noir */
         }
 
         #instruction-box {
@@ -76,7 +76,7 @@
             'TEST_page-0030.jpg',
             'TEST_page-0031.jpg',
             'TEST_page-0032.jpg'
-        ]; // Replace with your image names
+        ]; // Remplacez avec vos noms d'images
         let currentPage = 0;
 
         function showPage(pageIndex) {
@@ -94,6 +94,8 @@
                 currentPage++;
                 showPage(currentPage);
             }
+            // Cacher la boîte d'instruction après le premier clic
+            instructionBox.style.opacity = 0;
         });
 
         presentationContainer.addEventListener('dblclick', () => {
@@ -103,7 +105,7 @@
             }
         });
 
-        // Hide instruction box after a longer duration
+        // Cacher la boîte d'instruction après une plus longue durée
         setTimeout(() => {
             instructionBox.style.opacity = 0;
         }, 8000);
