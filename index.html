@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <div id="instruction-box">Click once to advance, double-click to go back.</div>
+    <div id="instruction-box">Click once to advance, double-click on mobile devices, or press the return key on PC.</div>
     <div id="presentation-container"></div>
     <script>
         const presentationContainer = document.getElementById('presentation-container');
@@ -104,21 +104,29 @@
             showPage(currentPage);
         });
 
-        presentationContainer.addEventListener('click', () => {
-            if (currentPage < images.length - 1) {
-                currentPage++;
-                showPage(currentPage);
-            }
-            // Cacher la boîte d'instruction après le premier clic
-            instructionBox.style.opacity = 0;
-        });
+        // Gestion des événements en fonction du type de dispositif
+        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-        presentationContainer.addEventListener('dblclick', () => {
-            if (currentPage > 0) {
-                currentPage--;
-                showPage(currentPage);
-            }
-        });
+        if (isMobileDevice) {
+            presentationContainer.addEventListener('dblclick', () => {
+                if (currentPage < images.length - 1) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+                // Cacher la boîte d'instruction après le premier clic
+                instructionBox.style.opacity = 0;
+            });
+        } else {
+            // Gestion du bouton de retour pour les PC
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    if (currentPage > 0) {
+                        currentPage--;
+                        showPage(currentPage);
+                    }
+                }
+            });
+        }
 
         // Cacher la boîte d'instruction après une plus longue durée
         setTimeout(() => {
