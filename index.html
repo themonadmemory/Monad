@@ -45,7 +45,8 @@
         }
 
         #prev-button,
-        #next-button {
+        #next-button,
+        #x-button {
             background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
             border: none;
@@ -61,6 +62,7 @@
     <div id="navigation-buttons">
         <button id="prev-button" onclick="navigate(-1)">Previous</button>
         <button id="next-button" onclick="navigate(1)">Next</button>
+        <button id="x-button" onclick="openX()">X</button>
     </div>
     <div id="presentation-container"></div>
     <script>
@@ -125,6 +127,10 @@
                 currentPage = newIndex;
                 showPage(currentPage);
             }
+        }
+
+        function openX() {
+            window.open('https://twitter.com/Crash_113589311', '_blank');
         }
     </script>
 </body>
