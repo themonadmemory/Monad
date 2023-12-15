@@ -111,6 +111,10 @@
         ]; // Remplacez avec vos noms d'images
         let currentPage = 0;
 
+        document.addEventListener('DOMContentLoaded', function() {
+            audio.play();
+        });
+
         function preloadImages() {
             images.forEach((image) => {
                 const img = new Image();
