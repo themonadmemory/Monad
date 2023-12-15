@@ -60,48 +60,23 @@
 </head>
 
 <body>
+    <audio id="audio" preload="auto" volume="0.5">
+        <source src="your-audio-file.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <div id="presentation-container"></div>
     <div id="navigation-buttons">
         <button id="prev-button" onclick="navigate(-1)">Previous</button>
         <button id="x-button" onclick="openX()">X</button>
-        <button id="next-button" onclick="navigate(1)">Next</button>
+        <button id="next-button" onclick="playAudio(); navigate(1)">Next</button>
     </div>
+
     <script>
         const presentationContainer = document.getElementById('presentation-container');
-        const images = ['TEST_page-0001.jpg',
-            'TEST_page-0002.jpg',
-            'TEST_page-0003.jpg',
-            'TEST_page-0004.jpg',
-            'TEST_page-0005.jpg',
-            'TEST_page-0006.jpg',
-            'TEST_page-0007.jpg',
-            'TEST_page-0008.jpg',
-            'TEST_page-0009.jpg',
-            'TEST_page-0010.jpg',
-            'TEST_page-0011.jpg',
-            'TEST_page-0012.jpg',
-            'TEST_page-0013.jpg',
-            'TEST_page-0014.jpg',
-            'TEST_page-0015.jpg',
-            'TEST_page-0016.jpg',
-            'TEST_page-0017.jpg',
-            'TEST_page-0018.jpg',
-            'TEST_page-0019.jpg',
-            'TEST_page-0020.jpg',
-            'TEST_page-0021.jpg',
-            'TEST_page-0022.jpg',
-            'TEST_page-0023.jpg',
-            'TEST_page-0024.jpg',
-            'TEST_page-0025.jpg',
-            'TEST_page-0026.jpg',
-            'TEST_page-0027.jpg',
-            'TEST_page-0028.jpg',
-            'TEST_page-0029.jpg',
-            'TEST_page-0030.jpg',
-            'TEST_page-0031.jpg',
-            
-        ]; // Remplacez avec vos noms d'images
+        const images = ['TEST_page-0001.jpg', 'TEST_page-0002.jpg', /* ... add other image URLs ... */ ];
         let currentPage = 0;
+        let audioPlayed = false;
 
         function preloadImages() {
             images.forEach((image) => {
@@ -110,7 +85,13 @@
             });
         }
 
-        preloadImages();
+        function playAudio() {
+            if (!audioPlayed) {
+                const audio = document.getElementById('audio');
+                audio.play();
+                audioPlayed = true;
+            }
+        }
 
         function showPage(pageIndex) {
             presentationContainer.style.opacity = 0;
@@ -119,8 +100,6 @@
                 presentationContainer.style.opacity = 1;
             }, 500);
         }
-
-        showPage(currentPage);
 
         function navigate(direction) {
             const newIndex = currentPage + direction;
@@ -133,6 +112,9 @@
         function openX() {
             window.open('https://twitter.com/Crash_113589311', '_blank');
         }
+
+        preloadImages();
+        showPage(currentPage);
     </script>
 </body>
 
