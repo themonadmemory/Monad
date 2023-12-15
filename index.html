@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Presentation</title>
     <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
         #presentation-container {
-            max-width: 100%;
-            height: auto;
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
             cursor: pointer;
             transition: opacity 1s ease-in-out;
         }
@@ -22,48 +30,50 @@
             padding: 20px;
             border-radius: 5px;
             opacity: 1;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 4s ease-in-out;
         }
     </style>
 </head>
+
 <body>
     <div id="instruction-box">Click once to advance, double-click to go back.</div>
     <div id="presentation-container"></div>
     <script>
         const presentationContainer = document.getElementById('presentation-container');
         const instructionBox = document.getElementById('instruction-box');
-        const images = ['TEST_page-0001.jpg', 
-                        'TEST_page-0002.jpg', 
-                        'TEST_page-0003.jpg', 
-                        'TEST_page-0004.jpg', 
-                        'TEST_page-0005.jpg', 
-                         'TEST_page-0006.jpg', 
-                        'TEST_page-0007.jpg', 
-                        'TEST_page-0008.jpg', 
-                        'TEST_page-0009.jpg', 
-                         'TEST_page-0010.jpg', 
-                        'TEST_page-0011.jpg', 
-                        'TEST_page-0012.jpg', 
-                        'TEST_page-0013.jpg', 
-                         'TEST_page-0014.jpg', 
-                        'TEST_page-0015.jpg', 
-                        'TEST_page-0016.jpg', 
-                        'TEST_page-0017.jpg', 
-                         'TEST_page-0018.jpg', 
-                        'TEST_page-0019.jpg', 
-                        'TEST_page-0020.jpg', 
-                        'TEST_page-0021.jpg', 
-                         'TEST_page-0022.jpg', 
-                        'TEST_page-0023.jpg', 
-                        'TEST_page-0024.jpg', 
-                        'TEST_page-0025.jpg',
-                         'TEST_page-0026.jpg', 
-                        'TEST_page-0027.jpg', 
-                        'TEST_page-0028.jpg', 
-                        'TEST_page-0029.jpg', 
-                         'TEST_page-0030.jpg', 
-                        'TEST_page-0031.jpg', 
-                        'TEST_page-0032.jpg'];  // Replace with your image names
+        const images = ['TEST_page-0001.jpg',
+            'TEST_page-0002.jpg',
+            'TEST_page-0003.jpg',
+            'TEST_page-0004.jpg',
+            'TEST_page-0005.jpg',
+            'TEST_page-0006.jpg',
+            'TEST_page-0007.jpg',
+            'TEST_page-0008.jpg',
+            'TEST_page-0009.jpg',
+            'TEST_page-0010.jpg',
+            'TEST_page-0011.jpg',
+            'TEST_page-0012.jpg',
+            'TEST_page-0013.jpg',
+            'TEST_page-0014.jpg',
+            'TEST_page-0015.jpg',
+            'TEST_page-0016.jpg',
+            'TEST_page-0017.jpg',
+            'TEST_page-0018.jpg',
+            'TEST_page-0019.jpg',
+            'TEST_page-0020.jpg',
+            'TEST_page-0021.jpg',
+            'TEST_page-0022.jpg',
+            'TEST_page-0023.jpg',
+            'TEST_page-0024.jpg',
+            'TEST_page-0025.jpg',
+            'TEST_page-0026.jpg',
+            'TEST_page-0027.jpg',
+            'TEST_page-0028.jpg',
+            'TEST_page-0029.jpg',
+            'TEST_page-0030.jpg',
+            'TEST_page-0031.jpg',
+            'TEST_page-0032.jpg'
+        ]; // Replace with your image names
         let currentPage = 0;
 
         function showPage(pageIndex) {
@@ -90,10 +100,11 @@
             }
         });
 
-        // Hide instruction box after a few seconds
+        // Hide instruction box after a longer duration
         setTimeout(() => {
             instructionBox.style.opacity = 0;
-        }, 3000);
+        }, 8000);
     </script>
 </body>
+
 </html>
