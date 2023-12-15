@@ -46,7 +46,8 @@
         }
 
         #prev-button,
-        #next-button {
+        #next-button,
+        #x-button {
             background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
             border: none;
@@ -54,23 +55,6 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
-        }
-
-        #volume-controls {
-            display: flex;
-            align-items: center;
-        }
-
-        #volume-button,
-        #mute-button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-right: 10px;
         }
     </style>
 </head>
@@ -84,11 +68,8 @@
     <div id="presentation-container"></div>
     <div id="navigation-buttons">
         <button id="prev-button" onclick="navigate(-1)">Previous</button>
+        <button id="x-button" onclick="openX()">X</button>
         <button id="next-button" onclick="navigate(1)">Next</button>
-        <div id="volume-controls">
-            <button id="volume-button" onclick="toggleVolume()">Volume</button>
-            <button id="mute-button" onclick="toggleMute()">Mute</button>
-        </div>
     </div>
 
     <script>
@@ -129,7 +110,6 @@
             'TEST_page-0032.jpg'
         ]; // Remplacez avec vos noms d'images
         let currentPage = 0;
-        let isMuted = false;
 
         function preloadImages() {
             images.forEach((image) => {
@@ -154,14 +134,8 @@
             }
         }
 
-        function toggleVolume() {
-            audio.volume = audio.volume === 0 ? 0.5 : 0; // Toggle between 50% volume and mute
-            isMuted = audio.volume === 0;
-        }
-
-        function toggleMute() {
-            isMuted = !isMuted;
-            audio.volume = isMuted ? 0 : 0.5;
+        function openX() {
+            window.open('https://twitter.com/Crash_113589311', '_blank');
         }
 
         preloadImages();
