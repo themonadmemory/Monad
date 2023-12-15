@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <div id="instruction-box">Click once to advance, double-click on mobile devices, or press the return key on PC.</div>
+    <div id="instruction-box">Click once to advance, double-click on mobile devices, or click here on PC.</div>
     <div id="presentation-container"></div>
     <script>
         const presentationContainer = document.getElementById('presentation-container');
@@ -117,14 +117,14 @@
                 instructionBox.style.opacity = 0;
             });
         } else {
-            // Gestion du bouton de retour pour les PC
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                    if (currentPage > 0) {
-                        currentPage--;
-                        showPage(currentPage);
-                    }
+            // Gestion du clic sur la boîte d'instruction pour les PC
+            instructionBox.addEventListener('click', () => {
+                if (currentPage < images.length - 1) {
+                    currentPage++;
+                    showPage(currentPage);
                 }
+                // Cacher la boîte d'instruction après le premier clic
+                instructionBox.style.opacity = 0;
             });
         }
 
